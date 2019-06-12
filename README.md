@@ -19,9 +19,14 @@ The script ends here allowing the user to choose if they would prefer to "quarte
 
 Should the user decide to quarter their experiment, they should progress to A-a_BoundaryOnset.m, else progress to B_ELISTthruEPOCH.m.
 
+### Optional: Quartering
+This step would require some optimization, could be done better using loops, and an array of event codes.
+
 #### A-a_BoundaryOnset.m
 
 #### A-b_DesignateQuarters.m
+
+This file will load each of the quartered files, and change the event codes to include 'x0' (where x represents quarter number, e.g. 1st quarter is 10, 2nd is 20, etc) in front of the relevant event code that was specified in the experimental design. The user would need to change the 'TargetCode' and 'NewCode' flags to their specific event codes.
 
 ### B_ELISTthruEPOCH.m
 
