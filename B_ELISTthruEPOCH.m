@@ -43,56 +43,56 @@ data_path_gavg = [home_path '/12_GAVG/'];
 %Starts a loop through all subjects                                                                                                                                                                                                                                                               
 for s=1:nsubj                                                                                                                                
 
-   %Ensures a fresh start for each subject                                                                                                    
+   	%Ensures a fresh start for each subject                                                                                                    
 	clear mem;
-    clear memory;
-    clear EEG;                                                                                                                                  
+    	clear memory;
+    	clear EEG;                                                                                                                                  
 	clear ERP;     
     
 	%print processing information in command window                                                                                             
 	fprintf('\n\n\n**** %s: Processing Subject ****\n\n\n', subject_list{s});
 
     %                                                                                                                                           
-	% IF YOU QUARTERED THE EXPERIMENT UNCOMMENT LINES 62, 63, 64
+    % IF YOU QUARTERED THE EXPERIMENT UNCOMMENT LINES 62, 63, 64
     % AND COMMENT OUT LINES 69, 70, 71
     %
-    %
-    % Load the concatenated file                                                                                                                      
+    	%
+    	% Load the concatenated file                                                                                                                      
 	%                                                                                                                                           
 	%fprintf('\n\n\n**** %s: Loading Dataset ****\n\n\n', subject_list{s});                                                                       
 	%EEG = pop_loadset('filename', [subject_list{s} '_filt_cdq.set'], 'filepath', data_path_cq);                                                         
 	%EEG = eeg_checkset( EEG ); 
     
-    %
-    % Load the filtered file                                                                                                                      
+    	%
+   	% Load the filtered file                                                                                                                      
 	%                                                                                                                                           
 	fprintf('\n\n\n**** %s: Loading Dataset ****\n\n\n', subject_list{s});                                                                       
 	EEG = pop_loadset('filename', [subject_list{s} '_filt.set'], 'filepath', data_path_filt);                                                         
 	EEG = eeg_checkset( EEG ); 
     
-    %
+    	%
 	% Create EVENTLIST
 	%
-    fprintf('\n\n\n**** %s: Creating eventlist ****\n\n\n', subject_list{s});
+    	fprintf('\n\n\n**** %s: Creating eventlist ****\n\n\n', subject_list{s});
 	EEG = pop_creabasiceventlist(EEG, 'Eventlist', [data_path_elisttxt subject_list{s} '_eventlist.txt'], 'Newboundary', {-99}, 'Stringboundary', {'boundary'}, 'Warning', 'on');
 	EEG.setname = [EEG.setname '_elist'];
 	EEG = pop_saveset(EEG, 'filename', [EEG.setname '.set'], 'filepath', data_path_elist); 
     
-    %                                                                                                
-    % Create BINLIST
-    %
-    fprintf('\n\n\n**** %s: Running BinLister ****\n\n\n', subject_list{s});
-    EEG  = pop_binlister( EEG , 'BDF', [home_path  '/_Scripts/SynViol_binlist.txt'], 'ExportEL', [data_path_bintxt subject_list{s} '_eventlist_bin.txt'], 'ImportEL', 'no', 'Saveas', 'on', 'SendEL2', 'EEG&Text', 'UpdateEEG', 'on', 'Warning', 'on' );  
-    EEG.setname = [EEG.setname '_bins'];
-    EEG = pop_saveset(EEG, 'filename',[EEG.setname '.set'], 'filepath', data_path_bins);                                                                                                                                                                                      
+    	%                                                                                                
+    	% Create BINLIST
+    	%
+    	fprintf('\n\n\n**** %s: Running BinLister ****\n\n\n', subject_list{s});
+    	EEG  = pop_binlister( EEG , 'BDF', [home_path  '/_Scripts/SynViol_binlist.txt'], 'ExportEL', [data_path_bintxt subject_list{s} '_eventlist_bin.txt'], 'ImportEL', 'no', 'Saveas', 'on', 'SendEL2', 'EEG&Text', 'UpdateEEG', 'on', 'Warning', 'on' );  
+    	EEG.setname = [EEG.setname '_bins'];
+    	EEG = pop_saveset(EEG, 'filename',[EEG.setname '.set'], 'filepath', data_path_bins);                                                                                                                                                                                      
     
-    %
-    % Epoching (200ms pre-stim, 1700ms post-stim
-    %
-    fprintf('\n\n\n**** %s: Bin-based epoching ****\n\n\n', subject_list{s});
-    EEG = pop_epochbin( EEG , [-200.0  1700.0],  'pre');
-    EEG.setname= [EEG.setname '_ep'];
-    EEG = pop_saveset(EEG, 'filename', [EEG.setname '.set'], 'filepath', data_path_epoch);
+    	%
+    	% Epoching (200ms pre-stim, 1700ms post-stim
+    	%
+    	fprintf('\n\n\n**** %s: Bin-based epoching ****\n\n\n', subject_list{s});
+    	EEG = pop_epochbin( EEG , [-200.0  1700.0],  'pre');
+    	EEG.setname= [EEG.setname '_ep'];
+    	EEG = pop_saveset(EEG, 'filename', [EEG.setname '.set'], 'filepath', data_path_epoch);
     
     
     
