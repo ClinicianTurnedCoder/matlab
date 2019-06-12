@@ -1,6 +1,7 @@
 # MATLAB Scripts
 
 Contained in this repository are matlab scripts I created using Steve Luck's ERPLAB plugin for EEGLAB.
+I wrote these scripts in 2012, during my time as a PhD student in Linguistics.
 Their purpose is to automate the processing of raw EEG data into ERP data, which can be later analyzed with statistical software.
 There are 5 standard scripts, and they are intended to be run in order, A through E.
 I divided them up this way for natural stopping points for decision points and or step-in points for variation in experimental testing.
