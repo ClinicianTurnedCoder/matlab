@@ -46,22 +46,22 @@ data_path_gavg = [home_path '/12_GAVG/'];
 %Starts a loop through all subjects                                                                                                                                                                                                                                                               
 for s=1:nsubj                                                                                                                                
 
-   %Ensures a fresh start for each subject                                                                                                    
+   	%Ensures a fresh start for each subject                                                                                                    
 	clear mem;
-    clear memory;
-    clear EEG;                                                                                                                                  
+    	clear memory;
+    	clear EEG;                                                                                                                                  
 	clear ERP;     
     
 	%print processing information in command window                                                                                             
 	fprintf('\n\n\n**** %s: Processing Subject ****\n\n\n', subject_list{s});                                                                    
 	
-    %                                                                                                                                           
+    	%                                                                                                                                           
 	%Imports Biosemi Files                                                                                                                      
 	%
-    fprintf('\n\n\n**** %s: Importing BIOSEMI File ****\n\n\n', subject_list{s});
-    EEG = pop_biosig([data_path_rawBDF subject_list{s} '.bdf'], 'ref',[35 36] ,'refoptions',{'keepref' 'off'});
-    EEG.setname= subject_list{s};
-    EEG = eeg_checkset( EEG );                                                                     
+    	fprintf('\n\n\n**** %s: Importing BIOSEMI File ****\n\n\n', subject_list{s});
+    	EEG = pop_biosig([data_path_rawBDF subject_list{s} '.bdf'], 'ref',[35 36] ,'refoptions',{'keepref' 'off'});
+    	EEG.setname= subject_list{s};
+    	EEG = eeg_checkset( EEG );                                                                     
 	EEG = pop_saveset(EEG, 'filename', [EEG.setname '.set'], 'filepath', data_path_rawSET);
    
 	%                                                                                                                                           
@@ -76,8 +76,8 @@ for s=1:nsubj
 	%
 	fprintf('\n\n\n**** %s: Renaming channels ****\n\n\n', subject_list{s});                                                                                                                                         
 	EEG = pop_eegchanoperator( EEG, [home_path '/_SCRIPTS/_ChanRename.txt']);
-    EEG.setname= [subject_list{s} 'r'];
-    EEG = pop_saveset(EEG, 'filename', [EEG.setname '.set'], 'filepath', data_path_ren);
+   	EEG.setname= [subject_list{s} 'r'];
+    	EEG = pop_saveset(EEG, 'filename', [EEG.setname '.set'], 'filepath', data_path_ren);
     
 	fprintf('\n\n\n**** %s: Including channel location info ****\n\n\n', subject_list{s});                                                                                                                                 
 	EEG=pop_chanedit(EEG, 'lookup',[home_path '/_SCRIPTS/_standard-10-5-cap385.elp']);  
@@ -87,10 +87,10 @@ for s=1:nsubj
 	%
 	% Run band filters
 	%
-    % 
+    	% 
 	fprintf('\n\n\n**** %s: Running Band Filters ****\n\n\n', subject_list{s});
 	EEG  = pop_basicfilter( EEG,  1:34 , 'Cutoff', [ 0.1 30], 'Design', 'butter', 'Filter', 'bandpass', 'Order',  2, 'RemoveDC', 'on' );
-    EEG.setname = [subject_list{s} '_filt'];                                                    
+    	EEG.setname = [subject_list{s} '_filt'];                                                    
 	EEG = pop_saveset(EEG, 'filename', [EEG.setname '.set'], 'filepath', data_path_filt);
     
     
