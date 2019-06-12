@@ -30,7 +30,8 @@ Creates a boundary onset that is somehow useful for quartering the datasets...
 
 This file will load each of the quartered files, and change the event codes to include 'x0' (where x represents quarter number, e.g. 1st quarter is 10, 2nd is 20, etc) in front of the relevant event code that was specified in the experimental design. The user would need to change the 'TargetCode' and 'NewCode' flags to their specific event codes.
 
-It also re-concatenates the quartered files, in preparation for returning to the main workflow (script B_...).
+It should also re-concatenate the quartered files, in preparation for returning to the main workflow (script B_...).
+(This however seems to be missing...)
 
 ### B_ELISTthruEPOCH.m
 
