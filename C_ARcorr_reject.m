@@ -48,28 +48,28 @@ for s=1:nsubj
     clear mem;
     clear memory;
     clear EEG;                                                                                                                                  
-	clear ERP;     
+    clear ERP;     
     
-	%print processing information in command window                                                                                             
-	fprintf('\n\n\n**** %s: Processing Subject ****\n\n\n', subject_list{s});
+    %print processing information in command window                                                                                             
+    fprintf('\n\n\n**** %s: Processing Subject ****\n\n\n', subject_list{s});
 
     %                                                                                                                                           
-	% IF YOU QUARTERED THE EXPERIMENT UNCOMMENT LINES 63, 64, 65
+    % IF YOU QUARTERED THE EXPERIMENT UNCOMMENT LINES 63, 64, 65
     % AND COMMENT OUT LINES 70, 71, 72
     %
     %
-	% Loads the quartered epoched file                                                                                                                      
-	%                                                                                                                                           
-	%fprintf('\n\n\n**** %s: Loading Dataset ****\n\n\n', subject_list{s});                                                                       
-	%EEG = pop_loadset('filename', [subject_list{s} '_filt_cdq_elist_bins_ep.set'], 'filepath', data_path_epoch);                                                         
-	%EEG = eeg_checkset( EEG );  
+    % Loads the quartered epoched file                                                                                                                      
+    %                                                                                                                                           
+    %fprintf('\n\n\n**** %s: Loading Dataset ****\n\n\n', subject_list{s});                                                                       
+    %EEG = pop_loadset('filename', [subject_list{s} '_filt_cdq_elist_bins_ep.set'], 'filepath', data_path_epoch);                                                         
+    %EEG = eeg_checkset( EEG );  
     
     %                                                                                                                                           
-	% Loads the epoched file                                                                                                                      
-	%                                                                                                                                           
-	fprintf('\n\n\n**** %s: Loading Dataset ****\n\n\n', subject_list{s});                                                                       
-	EEG = pop_loadset('filename', [subject_list{s} '_filt_elist_bins_ep.set'], 'filepath', data_path_epoch);                                                         
-	EEG = eeg_checkset( EEG );                                                                                                                                                                             
+    % Loads the epoched file                                                                                                                      
+    %                                                                                                                                           
+    fprintf('\n\n\n**** %s: Loading Dataset ****\n\n\n', subject_list{s});                                                                       
+    EEG = pop_loadset('filename', [subject_list{s} '_filt_elist_bins_ep.set'], 'filepath', data_path_epoch);                                                         
+    EEG = eeg_checkset( EEG );                                                                                                                                                                             
     
     
     %
